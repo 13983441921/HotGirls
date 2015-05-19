@@ -16,6 +16,7 @@ class CardViewContainer: UIView {
     
     var cardViewArray:[CardView] = []
     var rectArray:[CGRect] = []
+    var alphaArray:[CGFloat] = []
     var delegate:CardViewContainerDelegate?
     
     override init(frame: CGRect) {
@@ -28,6 +29,7 @@ class CardViewContainer: UIView {
             print("meishi\(i).jpg\n")
             cardView.center = CGPointMake(CGRectGetWidth(self.bounds)/2.0 , CGRectGetHeight(self.bounds)/2.0 + CGFloat(i)*30.0)
             cardView.alpha = 1-CGFloat(i) * 0.1
+            alphaArray.append(cardView.alpha)
             cardViewArray.append(cardView)
             rectArray.append(cardView.frame)
             
@@ -59,17 +61,70 @@ class CardViewContainer: UIView {
             }
             gesture.setTranslation(CGPointZero, inView: self)
         case .Ended:
-            for i in 0..<3{
-                var cardView:CardView = cardViewArray[i]
-                var originalRect:CGRect = rectArray[i]
+            
+            var endPoint = gesture.locationInView(self)
+            
+            
+            if endPoint.x > CGRectGetWidth(self.bounds) - 30 {
+                var firstCardView:CardView = cardViewArray[0]
+                var lastOriginalRect:CGRect = rectArray.last!
+                var lastAlpha:CGFloat = alphaArray.last!
                 
-                delegate?.cardDidEndAnimationStart()
-                UIView.animateWithDuration(0.5, delay: 0, usingSpringWithDamping: 0.4, initialSpringVelocity: 0, options: UIViewAnimationOptions.CurveEaseOut, animations: { () -> Void in
-                        cardView.frame = originalRect
-                    }, completion: { (flag:Bool) -> Void in
-                    
+                cardViewArray.removeAtIndex(0)
+                cardViewArray.append(firstCardView)
+
+                UIView .animateWithDuration(0.25, animations: { () -> Void in
+                    firstCardView.center = CGPointMake(CGRectGetWidth(self.bounds), firstCardView.center.y)
                 })
+            }else if endPoint.x < 100
+            {
+                var firstCardView:CardView = cardViewArray[0]
+                var lastOriginalRect:CGRect = rectArray.last!
+                var lastAlpha:CGFloat = alphaArray.last!
+                
+                cardViewArray.removeAtIndex(0)
+                cardViewArray.append(firstCardView)
+                
+
+                
+                UIView.animateWithDuration(0.25, animations: { () -> Void in
+                     firstCardView.center = CGPointMake(-CGRectGetWidth(self.bounds)*2, firstCardView.center.y)
+                    }, completion: { (isCompletion:Bool) -> Void in
+                        
+                        
+                        for i in 0..<2{
+                            var cardView:CardView = self.cardViewArray[i]
+                            var originalRect:CGRect = self.rectArray[i]
+                            var alphaInArray:CGFloat = self.alphaArray[i]
+                            
+                            self.delegate?.cardDidEndAnimationStart()
+                            UIView.animateWithDuration(1, delay: 0, usingSpringWithDamping: 0.4, initialSpringVelocity: 0, options: UIViewAnimationOptions.CurveEaseOut, animations: { () -> Void in
+                                cardView.frame = originalRect
+                                cardView.alpha = alphaInArray
+                                }, completion: { (flag:Bool) -> Void in
+                                    self.sendSubviewToBack(firstCardView)
+                                    firstCardView.frame = lastOriginalRect
+                                    firstCardView.alpha = lastAlpha
+                            })
+
+                        }
+                })
+            }else
+            {
+                for i in 0..<3{
+                    var cardView:CardView = cardViewArray[i]
+                    var originalRect:CGRect = rectArray[i]
+                    
+                    delegate?.cardDidEndAnimationStart()
+                    UIView.animateWithDuration(0.5, delay: 0, usingSpringWithDamping: 0.4, initialSpringVelocity: 0, options: UIViewAnimationOptions.CurveEaseOut, animations: { () -> Void in
+                        cardView.frame = originalRect
+                        }, completion: { (flag:Bool) -> Void in
+                            
+                    })
+                }
+
             }
+            
         default:
             print("defailt")
         }
@@ -79,6 +134,8 @@ class CardViewContainer: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-
+    func handleRightScroll(endPoint:CGPoint){
+        
+    }
 
 }

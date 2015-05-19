@@ -22,9 +22,14 @@ class CardView: UIView {
         super.init(frame: frame)
         self.backgroundColor = UIColor.whiteColor()
         
-        girlImageView.frame = CGRectInset(self.bounds, 10, 40)
+        
         
         self.addSubview(girlImageView)
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        girlImageView.frame = CGRectInset(self.bounds, 10, 40)
     }
 
     required init(coder aDecoder: NSCoder) {
