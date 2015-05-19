@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>9AE05C3A-5338-4660-8671-5AD9A1253CC7</string>
+	<key>IDESourceControlProjectName</key>
+	<string>HotGirls</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>26C0B3C74F1BCAC5AC7567242CC98E8094F4C5B6</key>
+		<string>github.com:zangqilong198812/HotGirls.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>HotGirls.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>26C0B3C74F1BCAC5AC7567242CC98E8094F4C5B6</key>
+		<string>..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>github.com:zangqilong198812/HotGirls.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>26C0B3C74F1BCAC5AC7567242CC98E8094F4C5B6</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>26C0B3C74F1BCAC5AC7567242CC98E8094F4C5B6</string>
+			<key>IDESourceControlWCCName</key>
+			<string>HotGirls</string>
+		</dict>
+	</array>
+</dict>
+</plist>

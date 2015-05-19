@@ -17,6 +17,10 @@
 		40E61AE91B09A77B00A0190D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E61AE81B09A77B00A0190D /* ViewController.swift */; };
 		40E61AEB1B09B0AC00A0190D /* StarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E61AEA1B09B0AC00A0190D /* StarView.swift */; };
 		40E61AED1B09B50B00A0190D /* SliderLabelContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E61AEC1B09B50B00A0190D /* SliderLabelContainer.swift */; };
+		40E61B211B0AD16300A0190D /* CardViewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E61B201B0AD16300A0190D /* CardViewContainer.swift */; };
+		40E61B261B0AD22900A0190D /* meishi1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 40E61B231B0AD22900A0190D /* meishi1.jpg */; };
+		40E61B271B0AD22900A0190D /* meishi2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 40E61B241B0AD22900A0190D /* meishi2.jpg */; };
+		40E61B281B0AD22900A0190D /* meishi3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 40E61B251B0AD22900A0190D /* meishi3.jpg */; };
 		976F3F392B37A1F2C9705FB0 /* Pods_HotGirls.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A6D7C2FEC098FB5E496C4FB /* Pods_HotGirls.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
 
@@ -46,6 +50,10 @@
 		40E61AE81B09A77B00A0190D /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		40E61AEA1B09B0AC00A0190D /* StarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarView.swift; sourceTree = "<group>"; };
 		40E61AEC1B09B50B00A0190D /* SliderLabelContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SliderLabelContainer.swift; sourceTree = "<group>"; };
+		40E61B201B0AD16300A0190D /* CardViewContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardViewContainer.swift; sourceTree = "<group>"; };
+		40E61B231B0AD22900A0190D /* meishi1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = meishi1.jpg; sourceTree = "<group>"; };
+		40E61B241B0AD22900A0190D /* meishi2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = meishi2.jpg; sourceTree = "<group>"; };
+		40E61B251B0AD22900A0190D /* meishi3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = meishi3.jpg; sourceTree = "<group>"; };
 		6D6751E6AE5D44D590AC5D7A /* Pods-HotGirls.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HotGirls.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HotGirls/Pods-HotGirls.debug.xcconfig"; sourceTree = "<group>"; };
 		FDE230B129D9DB2493F281C2 /* Pods-HotGirls.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HotGirls.release.xcconfig"; path = "Pods/Target Support Files/Pods-HotGirls/Pods-HotGirls.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -101,6 +109,7 @@
 		40C33BAC1AF0D36300C45B37 /* HotGirls */ = {
 			isa = PBXGroup;
 			children = (
+				40E61B221B0AD21F00A0190D /* Resources */,
 				40E61AE31B099BA300A0190D /* Utils */,
 				40E61AE21B099B9F00A0190D /* Views */,
 				40E61AE11B099B9500A0190D /* Controllers */,
@@ -150,6 +159,7 @@
 			isa = PBXGroup;
 			children = (
 				40E61AE41B099BB000A0190D /* CardView.swift */,
+				40E61B201B0AD16300A0190D /* CardViewContainer.swift */,
 				40E61AEA1B09B0AC00A0190D /* StarView.swift */,
 				40E61AEC1B09B50B00A0190D /* SliderLabelContainer.swift */,
 			);
@@ -162,6 +172,16 @@
 				40E61AE61B09A74D00A0190D /* fengjing.jpg */,
 			);
 			name = Utils;
+			sourceTree = "<group>";
+		};
+		40E61B221B0AD21F00A0190D /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				40E61B231B0AD22900A0190D /* meishi1.jpg */,
+				40E61B241B0AD22900A0190D /* meishi2.jpg */,
+				40E61B251B0AD22900A0190D /* meishi3.jpg */,
+			);
+			name = Resources;
 			sourceTree = "<group>";
 		};
 		79260AA7B472C4F8814D8880 /* Frameworks */ = {
@@ -255,10 +275,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				40E61B281B0AD22900A0190D /* meishi3.jpg in Resources */,
 				40C33BB51AF0D36300C45B37 /* Main.storyboard in Resources */,
+				40E61B261B0AD22900A0190D /* meishi1.jpg in Resources */,
 				40C33BBA1AF0D36300C45B37 /* LaunchScreen.xib in Resources */,
 				40C33BB71AF0D36300C45B37 /* Images.xcassets in Resources */,
 				40E61AE71B09A74D00A0190D /* fengjing.jpg in Resources */,
+				40E61B271B0AD22900A0190D /* meishi2.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -324,6 +347,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				40E61B211B0AD16300A0190D /* CardViewContainer.swift in Sources */,
 				40E61AED1B09B50B00A0190D /* SliderLabelContainer.swift in Sources */,
 				40E61AE51B099BB000A0190D /* CardView.swift in Sources */,
 				40E61AE91B09A77B00A0190D /* ViewController.swift in Sources */,

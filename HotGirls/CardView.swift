@@ -11,29 +11,20 @@ import SnapKit
 
 class CardView: UIView {
     
-    var girlImageView: UIImageView = UIImageView(frame: CGRectZero)
-    var girlImage:UIImage?{
+    var girlImageView: UIImageView = UIImageView()
+    
+    var girlImage: UIImage?{
         didSet{
             girlImageView.image = girlImage
         }
     }
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
+        self.backgroundColor = UIColor.whiteColor()
         
-        self.backgroundColor = UIColor.blackColor()
-        self.clipsToBounds = true
+        girlImageView.frame = CGRectInset(self.bounds, 10, 40)
         
         self.addSubview(girlImageView)
-        girlImage = UIImage(named: "fengjing.jpg")
-        girlImageView.image = girlImage
-        girlImageView.contentMode = UIViewContentMode.ScaleToFill
-        
-        girlImageView.snp_makeConstraints({
-            (make:ConstraintMaker) -> Void in
-            make.edges.equalTo(self).insets(EdgeInsetsMake(10, 10, 10, 10))
-            
-        })
     }
 
     required init(coder aDecoder: NSCoder) {
