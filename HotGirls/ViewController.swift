@@ -14,6 +14,7 @@ class ViewController: UIViewController {
     var screenWidth = CGRectGetWidth(UIScreen.mainScreen().bounds)
     var screenHeight = CGRectGetHeight(UIScreen.mainScreen().bounds)
 
+    var starView:StarView = StarView(frame: CGRectMake(0, 0, 100, 100))
     var cardViewContainer:CardViewContainer = CardViewContainer(frame: CGRectMake(0, 0, 320, 260))
     var num:Int = 99
     
@@ -22,31 +23,26 @@ class ViewController: UIViewController {
         
         self.view.backgroundColor = UIColor.blackColor()
         
-        cardViewContainer.center = self.view.center
+        cardViewContainer.center = CGPointMake(self.view.center.x, self.view.center.y-100)
+        cardViewContainer.delegate = self
         self.view.addSubview(cardViewContainer)
         
+        starView.center = CGPointMake(self.view.center.x, self.view.center.y+200)
+        self.view .addSubview(starView)
         
         // Do any additional setup after loading the view.
-    }
-
-    @IBAction func startAnimation(){
-    
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
 
-    /*
-    // MARK: - Navigation
+}
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+extension ViewController:CardViewContainerDelegate{
+    func cardDidEndAnimationStart() {
+        var num:Int = Int(arc4random_uniform(99))
+        starView.startLoadNumber(num)
     }
-    */
-
 }

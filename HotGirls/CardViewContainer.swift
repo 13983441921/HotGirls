@@ -8,10 +8,15 @@
 
 import UIKit
 
+protocol CardViewContainerDelegate{
+    func cardDidEndAnimationStart()
+}
+
 class CardViewContainer: UIView {
     
     var cardViewArray:[CardView] = []
     var rectArray:[CGRect] = []
+    var delegate:CardViewContainerDelegate?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -58,6 +63,7 @@ class CardViewContainer: UIView {
                 var cardView:CardView = cardViewArray[i]
                 var originalRect:CGRect = rectArray[i]
                 
+                delegate?.cardDidEndAnimationStart()
                 UIView.animateWithDuration(0.5, delay: 0, usingSpringWithDamping: 0.4, initialSpringVelocity: 0, options: UIViewAnimationOptions.CurveEaseOut, animations: { () -> Void in
                         cardView.frame = originalRect
                     }, completion: { (flag:Bool) -> Void in
