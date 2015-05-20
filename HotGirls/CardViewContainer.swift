@@ -14,6 +14,10 @@ protocol CardViewContainerDelegate{
 
 class CardViewContainer: UIView {
     
+    let kDeleteXNum:CGFloat = 100.0
+    let kDeltaHeightAndWidth:CGFloat = 20.0
+    let kDeltaYAxis:CGFloat = 30.0
+    
     var cardViewArray:[CardView] = []
     var rectArray:[CGRect] = []
     var alphaArray:[CGFloat] = []
@@ -23,11 +27,11 @@ class CardViewContainer: UIView {
         super.init(frame: frame)
         
         for i in 0..<3{
-            var cardView:CardView = CardView(frame: CGRectInset(self.bounds, CGFloat(i)*20.0, CGFloat(i)*20.0))
+            var cardView:CardView = CardView(frame: CGRectInset(self.bounds, CGFloat(i)*kDeltaHeightAndWidth, CGFloat(i)*kDeltaHeightAndWidth))
         
             cardView.girlImage = UIImage(named: "meishi\(i+1).jpg")!
             print("meishi\(i).jpg\n")
-            cardView.center = CGPointMake(CGRectGetWidth(self.bounds)/2.0 , CGRectGetHeight(self.bounds)/2.0 + CGFloat(i)*30.0)
+            cardView.center = CGPointMake(CGRectGetWidth(self.bounds)/2.0 , CGRectGetHeight(self.bounds)/2.0 + CGFloat(i)*kDeltaYAxis)
             cardView.alpha = 1-CGFloat(i) * 0.1
             alphaArray.append(cardView.alpha)
             cardViewArray.append(cardView)
@@ -65,7 +69,7 @@ class CardViewContainer: UIView {
             var endPoint = gesture.locationInView(self)
             
             
-            if endPoint.x > CGRectGetWidth(self.bounds) - 100 {
+            if endPoint.x > (CGRectGetWidth(self.bounds) - kDeleteXNum) {
                 var firstCardView:CardView = cardViewArray[0]
                 var lastOriginalRect:CGRect = rectArray.last!
                 var lastAlpha:CGFloat = alphaArray.last!
@@ -96,7 +100,7 @@ class CardViewContainer: UIView {
                         }
                 })
 
-            }else if endPoint.x < 100
+            }else if endPoint.x < kDeleteXNum
             {
                 var firstCardView:CardView = cardViewArray[0]
                 var lastOriginalRect:CGRect = rectArray.last!
