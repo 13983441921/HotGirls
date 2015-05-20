@@ -65,7 +65,7 @@ class CardViewContainer: UIView {
             var endPoint = gesture.locationInView(self)
             
             
-            if endPoint.x > CGRectGetWidth(self.bounds) - 30 {
+            if endPoint.x > CGRectGetWidth(self.bounds) - 100 {
                 var firstCardView:CardView = cardViewArray[0]
                 var lastOriginalRect:CGRect = rectArray.last!
                 var lastAlpha:CGFloat = alphaArray.last!
@@ -73,9 +73,29 @@ class CardViewContainer: UIView {
                 cardViewArray.removeAtIndex(0)
                 cardViewArray.append(firstCardView)
 
-                UIView .animateWithDuration(0.25, animations: { () -> Void in
-                    firstCardView.center = CGPointMake(CGRectGetWidth(self.bounds), firstCardView.center.y)
+                UIView.animateWithDuration(0.25, animations: { () -> Void in
+                    firstCardView.center = CGPointMake(CGRectGetWidth(self.bounds)*2, firstCardView.center.y)
+                    }, completion: { (isCompletion:Bool) -> Void in
+                        
+                        
+                        for i in 0..<2{
+                            var cardView:CardView = self.cardViewArray[i]
+                            var originalRect:CGRect = self.rectArray[i]
+                            var alphaInArray:CGFloat = self.alphaArray[i]
+                            
+                            self.delegate?.cardDidEndAnimationStart()
+                            UIView.animateWithDuration(1, delay: 0, usingSpringWithDamping: 0.4, initialSpringVelocity: 0, options: UIViewAnimationOptions.CurveEaseOut, animations: { () -> Void in
+                                cardView.frame = originalRect
+                                cardView.alpha = alphaInArray
+                                }, completion: { (flag:Bool) -> Void in
+                                    self.sendSubviewToBack(firstCardView)
+                                    firstCardView.frame = lastOriginalRect
+                                    firstCardView.alpha = lastAlpha
+                            })
+                            
+                        }
                 })
+
             }else if endPoint.x < 100
             {
                 var firstCardView:CardView = cardViewArray[0]
