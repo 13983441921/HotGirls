@@ -11,7 +11,7 @@ import SnapKit
 
 class CardView: UIView {
     
-    var girlImageView: UIImageView = UIImageView()
+    var girlImageView: UIImageView = UIImageView(frame: CGRectZero)
     
     var girlImage: UIImage?{
         didSet{
@@ -20,18 +20,22 @@ class CardView: UIView {
     }
     override init(frame: CGRect) {
         super.init(frame: frame)
+        self.clipsToBounds = true
         self.backgroundColor = UIColor.whiteColor()
         
-        
-        
         self.addSubview(girlImageView)
+        
+        girlImageView.snp_makeConstraints { (make:ConstraintMaker) -> Void in
+            make.edges.equalTo(self).insets(EdgeInsetsMake(20, 10, 20, 10))
+        }
     }
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        girlImageView.frame = CGRectInset(self.bounds, 10, 40)
+        
     }
-
+    
+    
     required init(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

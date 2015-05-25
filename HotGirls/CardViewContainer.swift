@@ -23,6 +23,12 @@ class CardViewContainer: UIView {
     var alphaArray:[CGFloat] = []
     var delegate:CardViewContainerDelegate?
     
+    var isOpenCardModel:Bool = true{
+        didSet{
+            openCardModel(isOpenCardModel)
+        }
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -41,14 +47,15 @@ class CardViewContainer: UIView {
             self.sendSubviewToBack(cardView)
         }
         
-        var layerTransform:CATransform3D = CATransform3DIdentity
-        layerTransform.m34 = -1.0/500
+        print("array count is %d",cardViewArray.count)
         
-        self.layer.transform = layerTransform
-       
         var gesture:UIPanGestureRecognizer = UIPanGestureRecognizer(target: self, action: Selector("handlePanGesture:"))
         
         self.addGestureRecognizer(gesture)
+        
+        var tapGesture:UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: Selector("handleTapGesture:"))
+        
+        self.addGestureRecognizer(tapGesture)
     }
     
     func handlePanGesture(gesture:UIPanGestureRecognizer){
@@ -59,105 +66,158 @@ class CardViewContainer: UIView {
             startPoint = point
         case .Changed:
             var translatePoint = gesture.translationInView(self)
-            for i in 0..<3{
-                var cardView:CardView = cardViewArray[i]
-                cardView.center = CGPointMake(cardView.center.x + translatePoint.x*0.5*CGFloat(3-i), cardView.center.y)
+            
+            if isOpenCardModel{
+                for i in 0..<3{
+                    var cardView:CardView = cardViewArray[i]
+                    cardView.center = CGPointMake(cardView.center.x + translatePoint.x*0.5*CGFloat(3-i), cardView.center.y)
+                }
+                gesture.setTranslation(CGPointZero, inView: self)
+            }else
+            {
+                
             }
-            gesture.setTranslation(CGPointZero, inView: self)
+            
         case .Ended:
             
             var endPoint = gesture.locationInView(self)
             
-            
-            if endPoint.x > (CGRectGetWidth(self.bounds) - kDeleteXNum) {
-                var firstCardView:CardView = cardViewArray[0]
-                var lastOriginalRect:CGRect = rectArray.last!
-                var lastAlpha:CGFloat = alphaArray.last!
-                
-                cardViewArray.removeAtIndex(0)
-                cardViewArray.append(firstCardView)
-
-                UIView.animateWithDuration(0.25, animations: { () -> Void in
-                    firstCardView.center = CGPointMake(CGRectGetWidth(self.bounds)*2, firstCardView.center.y)
-                    }, completion: { (isCompletion:Bool) -> Void in
-                        
-                        
-                        for i in 0..<2{
-                            var cardView:CardView = self.cardViewArray[i]
-                            var originalRect:CGRect = self.rectArray[i]
-                            var alphaInArray:CGFloat = self.alphaArray[i]
-                            
-                            self.delegate?.cardDidEndAnimationStart()
-                            UIView.animateWithDuration(1, delay: 0, usingSpringWithDamping: 0.4, initialSpringVelocity: 0, options: UIViewAnimationOptions.CurveEaseOut, animations: { () -> Void in
-                                cardView.frame = originalRect
-                                cardView.alpha = alphaInArray
-                                }, completion: { (flag:Bool) -> Void in
-                                  
-                            })
-                            
-                            firstCardView.frame = lastOriginalRect
-                            UIView.animateWithDuration(0.25, delay: 0.5, options: UIViewAnimationOptions.CurveEaseIn, animations: { () -> Void in
-                                self.sendSubviewToBack(firstCardView)
-                                
-                                firstCardView.alpha = lastAlpha
-                            }, completion: { (_) -> Void in
-                                
-                            })
-                            
-                        }
-                })
-
-            }else if endPoint.x < kDeleteXNum
-            {
-                var firstCardView:CardView = cardViewArray[0]
-                var lastOriginalRect:CGRect = rectArray.last!
-                var lastAlpha:CGFloat = alphaArray.last!
-                
-                cardViewArray.removeAtIndex(0)
-                cardViewArray.append(firstCardView)
-                
-
-                
-                UIView.animateWithDuration(0.25, animations: { () -> Void in
-                     firstCardView.center = CGPointMake(-CGRectGetWidth(self.bounds)*2, firstCardView.center.y)
-                    }, completion: { (isCompletion:Bool) -> Void in
-                        
-                        
-                        for i in 0..<2{
-                            var cardView:CardView = self.cardViewArray[i]
-                            var originalRect:CGRect = self.rectArray[i]
-                            var alphaInArray:CGFloat = self.alphaArray[i]
-                            
-                            self.delegate?.cardDidEndAnimationStart()
-                            UIView.animateWithDuration(1, delay: 0, usingSpringWithDamping: 0.4, initialSpringVelocity: 0, options: UIViewAnimationOptions.CurveEaseOut, animations: { () -> Void in
-                                cardView.frame = originalRect
-                                cardView.alpha = alphaInArray
-                                }, completion: { (flag:Bool) -> Void in
-                                    self.sendSubviewToBack(firstCardView)
-                                    firstCardView.frame = lastOriginalRect
-                                    firstCardView.alpha = lastAlpha
-                            })
-
-                        }
-                })
+            if isOpenCardModel{
+                detectEndPoint(endPoint)
             }else
             {
-                for i in 0..<3{
-                    var cardView:CardView = cardViewArray[i]
-                    var originalRect:CGRect = rectArray[i]
-                    
-                    delegate?.cardDidEndAnimationStart()
-                    UIView.animateWithDuration(0.5, delay: 0, usingSpringWithDamping: 0.4, initialSpringVelocity: 0, options: UIViewAnimationOptions.CurveEaseOut, animations: { () -> Void in
-                        cardView.frame = originalRect
-                        }, completion: { (flag:Bool) -> Void in
-                            
-                    })
-                }
-
+                
             }
+            
             
         default:
             print("defailt")
+        }
+    }
+    
+    func detectEndPoint(endPoint:CGPoint){
+        if endPoint.x > (CGRectGetWidth(self.bounds) - kDeleteXNum) {
+            var firstCardView:CardView = cardViewArray[0]
+            var lastOriginalRect:CGRect = rectArray.last!
+            var lastAlpha:CGFloat = alphaArray.last!
+            
+            cardViewArray.removeAtIndex(0)
+            cardViewArray.append(firstCardView)
+            
+            UIView.animateWithDuration(0.25, animations: { () -> Void in
+                firstCardView.center = CGPointMake(CGRectGetWidth(self.bounds)*2, firstCardView.center.y)
+                }, completion: { (isCompletion:Bool) -> Void in
+                    
+                    
+                    for i in 0..<2{
+                        var cardView:CardView = self.cardViewArray[i]
+                        var originalRect:CGRect = self.rectArray[i]
+                        var alphaInArray:CGFloat = self.alphaArray[i]
+                        
+                        self.delegate?.cardDidEndAnimationStart()
+                        UIView.animateWithDuration(1, delay: 0, usingSpringWithDamping: 0.4, initialSpringVelocity: 0, options: UIViewAnimationOptions.CurveEaseOut, animations: { () -> Void in
+                            cardView.frame = originalRect
+                            cardView.alpha = alphaInArray
+                            }, completion: { (flag:Bool) -> Void in
+                                
+                        })
+                        
+                        firstCardView.frame = lastOriginalRect
+                        UIView.animateWithDuration(0.25, delay: 0.5, options: UIViewAnimationOptions.CurveEaseIn, animations: { () -> Void in
+                            self.sendSubviewToBack(firstCardView)
+                            
+                            firstCardView.alpha = lastAlpha
+                            }, completion: { (_) -> Void in
+                                
+                        })
+                        
+                    }
+            })
+            
+        }else if endPoint.x < kDeleteXNum
+        {
+            var firstCardView:CardView = cardViewArray[0]
+            var lastOriginalRect:CGRect = rectArray.last!
+            var lastAlpha:CGFloat = alphaArray.last!
+            
+            cardViewArray.removeAtIndex(0)
+            cardViewArray.append(firstCardView)
+            
+            
+            
+            UIView.animateWithDuration(0.25, animations: { () -> Void in
+                firstCardView.center = CGPointMake(-CGRectGetWidth(self.bounds)*2, firstCardView.center.y)
+                }, completion: { (isCompletion:Bool) -> Void in
+                    
+                    
+                    for i in 0..<2{
+                        var cardView:CardView = self.cardViewArray[i]
+                        var originalRect:CGRect = self.rectArray[i]
+                        var alphaInArray:CGFloat = self.alphaArray[i]
+                        
+                        self.delegate?.cardDidEndAnimationStart()
+                        UIView.animateWithDuration(1, delay: 0, usingSpringWithDamping: 0.4, initialSpringVelocity: 0, options: UIViewAnimationOptions.CurveEaseOut, animations: { () -> Void in
+                            cardView.frame = originalRect
+                            cardView.alpha = alphaInArray
+                            }, completion: { (flag:Bool) -> Void in
+                                self.sendSubviewToBack(firstCardView)
+                                firstCardView.frame = lastOriginalRect
+                                firstCardView.alpha = lastAlpha
+                        })
+                        
+                        
+                    }
+            })
+        }else
+        {
+            for i in 0..<3{
+                var cardView:CardView = cardViewArray[i]
+                var originalRect:CGRect = rectArray[i]
+                
+                delegate?.cardDidEndAnimationStart()
+                UIView.animateWithDuration(0.5, delay: 0, usingSpringWithDamping: 0.4, initialSpringVelocity: 0, options: UIViewAnimationOptions.CurveEaseOut, animations: { () -> Void in
+                    cardView.frame = originalRect
+                    }, completion: { (flag:Bool) -> Void in
+                        
+                })
+                
+                
+            }
+            
+        }
+
+    }
+    
+    func handleTapGesture(tapGesture:UITapGestureRecognizer){
+        isOpenCardModel = !isOpenCardModel
+    }
+    
+    func openCardModel(open:Bool){
+        if open{
+            for i in 0..<cardViewArray.count{
+                var view:CardView = cardViewArray[i]
+                
+                UIView.animateWithDuration(0.25, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0, options: UIViewAnimationOptions.CurveEaseInOut, animations: { () -> Void in
+                    view.frame = self.rectArray[i]
+                    }, completion: { (flag:Bool) -> Void in
+                        
+                })
+            }
+        }else
+        {
+            var firstRect:CGRect = rectArray.first!
+
+            for i in 1..<cardViewArray.count{
+                var view:CardView = cardViewArray[i]
+                
+                UIView.animateWithDuration(0.25, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0, options: UIViewAnimationOptions.CurveEaseInOut, animations: { () -> Void in
+                    view.frame = firstRect
+                    }, completion: { (flag:Bool) -> Void in
+
+                        
+                })
+
+            }
         }
     }
 
