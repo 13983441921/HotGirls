@@ -12,6 +12,7 @@
 		40C33BB71AF0D36300C45B37 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 40C33BB61AF0D36300C45B37 /* Images.xcassets */; };
 		40C33BBA1AF0D36300C45B37 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 40C33BB81AF0D36300C45B37 /* LaunchScreen.xib */; };
 		40C33BC61AF0D36300C45B37 /* HotGirlsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40C33BC51AF0D36300C45B37 /* HotGirlsTests.swift */; };
+		40E2A89D1B132C0E000F7BED /* tom.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 40E2A89C1B132C0E000F7BED /* tom.jpg */; };
 		40E61AE51B099BB000A0190D /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E61AE41B099BB000A0190D /* CardView.swift */; };
 		40E61AE71B09A74D00A0190D /* fengjing.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 40E61AE61B09A74D00A0190D /* fengjing.jpg */; };
 		40E61AE91B09A77B00A0190D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E61AE81B09A77B00A0190D /* ViewController.swift */; };
@@ -46,6 +47,7 @@
 		40C33BBF1AF0D36300C45B37 /* HotGirlsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HotGirlsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		40C33BC41AF0D36300C45B37 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		40C33BC51AF0D36300C45B37 /* HotGirlsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotGirlsTests.swift; sourceTree = "<group>"; };
+		40E2A89C1B132C0E000F7BED /* tom.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = tom.jpg; sourceTree = "<group>"; };
 		40E61AE41B099BB000A0190D /* CardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		40E61AE61B09A74D00A0190D /* fengjing.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = fengjing.jpg; path = ../fengjing.jpg; sourceTree = "<group>"; };
 		40E61AE81B09A77B00A0190D /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -183,6 +185,7 @@
 				40E61B231B0AD22900A0190D /* meishi1.jpg */,
 				40E61B241B0AD22900A0190D /* meishi2.jpg */,
 				40E61B251B0AD22900A0190D /* meishi3.jpg */,
+				40E2A89C1B132C0E000F7BED /* tom.jpg */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -284,6 +287,7 @@
 				40C33BBA1AF0D36300C45B37 /* LaunchScreen.xib in Resources */,
 				40C33BB71AF0D36300C45B37 /* Images.xcassets in Resources */,
 				40E61AE71B09A74D00A0190D /* fengjing.jpg in Resources */,
+				40E2A89D1B132C0E000F7BED /* tom.jpg in Resources */,
 				40E61B271B0AD22900A0190D /* meishi2.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

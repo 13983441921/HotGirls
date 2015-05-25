@@ -200,9 +200,11 @@ class CardViewContainer: UIView {
                 UIView.animateWithDuration(0.25, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0, options: UIViewAnimationOptions.CurveEaseInOut, animations: { () -> Void in
                     view.frame = self.rectArray[i]
                     }, completion: { (flag:Bool) -> Void in
-                        
                 })
             }
+            var firstView:CardView = self.cardViewArray[0]
+            firstView.showAvatarImageView(false)
+
         }else
         {
             var firstRect:CGRect = rectArray.first!
@@ -210,14 +212,19 @@ class CardViewContainer: UIView {
             for i in 1..<cardViewArray.count{
                 var view:CardView = cardViewArray[i]
                 
+                // 如果不缩小ImageView那么在动画期间imageView的大小会直接是父view结束时的大小
+                view.prepareForHideImageView()
+                
                 UIView.animateWithDuration(0.25, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0, options: UIViewAnimationOptions.CurveEaseInOut, animations: { () -> Void in
                     view.frame = firstRect
                     }, completion: { (flag:Bool) -> Void in
-
+                       view.finishedPreppareHideImageView()
                         
                 })
 
             }
+            var firstView:CardView = self.cardViewArray[0]
+            firstView.showAvatarImageView(true)
         }
     }
 
