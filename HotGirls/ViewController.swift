@@ -11,6 +11,8 @@ import SnapKit
 
 class ViewController: UIViewController {
     
+    var cupLayer:CAShapeLayer = CAShapeLayer()
+    
     var screenWidth = CGRectGetWidth(UIScreen.mainScreen().bounds)
     var screenHeight = CGRectGetHeight(UIScreen.mainScreen().bounds)
 
@@ -20,7 +22,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        navigationController?.navigationBarHidden = true
         self.view.backgroundColor = UIColor.blackColor()
         
         cardViewContainer.center = CGPointMake(self.view.center.x, self.view.center.y-100)
@@ -30,7 +32,11 @@ class ViewController: UIViewController {
         starView.center = CGPointMake(self.view.center.x, self.view.center.y+200)
         self.view .addSubview(starView)
         
-        // Do any additional setup after loading the view.
+    }
+    
+    @IBAction func startAnimation(){
+        
+        
     }
     
     override func didReceiveMemoryWarning() {

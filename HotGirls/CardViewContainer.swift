@@ -92,9 +92,16 @@ class CardViewContainer: UIView {
                                 cardView.frame = originalRect
                                 cardView.alpha = alphaInArray
                                 }, completion: { (flag:Bool) -> Void in
-                                    self.sendSubviewToBack(firstCardView)
-                                    firstCardView.frame = lastOriginalRect
-                                    firstCardView.alpha = lastAlpha
+                                  
+                            })
+                            
+                            firstCardView.frame = lastOriginalRect
+                            UIView.animateWithDuration(0.25, delay: 0.5, options: UIViewAnimationOptions.CurveEaseIn, animations: { () -> Void in
+                                self.sendSubviewToBack(firstCardView)
+                                
+                                firstCardView.alpha = lastAlpha
+                            }, completion: { (_) -> Void in
+                                
                             })
                             
                         }
