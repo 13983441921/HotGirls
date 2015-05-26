@@ -60,7 +60,7 @@ class CardView: UIView {
         girlImageView.transform = CGAffineTransformMakeScale(0.1, 0.1)
     }
     
-    func finishedPreppareHideImageView(){
+    func finishedPrepareHideImageView(){
         girlImageView.transform = CGAffineTransformIdentity
     }
     

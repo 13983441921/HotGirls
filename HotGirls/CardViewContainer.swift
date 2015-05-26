@@ -122,16 +122,19 @@ class CardViewContainer: UIView {
                                 
                         })
                         
-                        firstCardView.frame = lastOriginalRect
-                        UIView.animateWithDuration(0.25, delay: 0.5, options: UIViewAnimationOptions.CurveEaseIn, animations: { () -> Void in
-                            self.sendSubviewToBack(firstCardView)
-                            
-                            firstCardView.alpha = lastAlpha
-                            }, completion: { (_) -> Void in
-                                
-                        })
-                        
                     }
+                    
+                    
+                    firstCardView.frame = lastOriginalRect
+                    firstCardView.alpha = lastAlpha
+                    UIView.animateWithDuration(0.25, delay: 0.5, options: UIViewAnimationOptions.CurveEaseIn, animations: { () -> Void in
+                        self.sendSubviewToBack(firstCardView)
+                        
+                        
+                        }, completion: { (_) -> Void in
+                            
+                    })
+
             })
             
         }else if endPoint.x < kDeleteXNum
@@ -142,9 +145,7 @@ class CardViewContainer: UIView {
             
             cardViewArray.removeAtIndex(0)
             cardViewArray.append(firstCardView)
-            
-            
-            
+
             UIView.animateWithDuration(0.25, animations: { () -> Void in
                 firstCardView.center = CGPointMake(-CGRectGetWidth(self.bounds)*2, firstCardView.center.y)
                 }, completion: { (isCompletion:Bool) -> Void in
@@ -160,13 +161,20 @@ class CardViewContainer: UIView {
                             cardView.frame = originalRect
                             cardView.alpha = alphaInArray
                             }, completion: { (flag:Bool) -> Void in
-                                self.sendSubviewToBack(firstCardView)
-                                firstCardView.frame = lastOriginalRect
-                                firstCardView.alpha = lastAlpha
+
                         })
                         
                         
                     }
+                    firstCardView.frame = lastOriginalRect
+                    firstCardView.alpha = lastAlpha
+                    UIView.animateWithDuration(0.25, delay: 0.5, options: UIViewAnimationOptions.CurveEaseIn, animations: { () -> Void in
+                        self.sendSubviewToBack(firstCardView)
+                        
+                        
+                        }, completion: { (_) -> Void in
+                            
+                    })
             })
         }else
         {
@@ -218,7 +226,7 @@ class CardViewContainer: UIView {
                 UIView.animateWithDuration(0.25, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0, options: UIViewAnimationOptions.CurveEaseInOut, animations: { () -> Void in
                     view.frame = firstRect
                     }, completion: { (flag:Bool) -> Void in
-                       view.finishedPreppareHideImageView()
+                       view.finishedPrepareHideImageView()
                         
                 })
 
