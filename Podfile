@@ -6,6 +6,7 @@ pod 'Alamofire'
 pod 'Kingfisher'
 pod 'pop'
 pod 'SnapKit'
+pod 'SwiftyJSON'
 end
 
 target 'HotGirlsTests' do

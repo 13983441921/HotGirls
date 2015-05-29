@@ -8,6 +8,8 @@
 
 import UIKit
 import SnapKit
+import Alamofire
+import SwiftyJSON
 
 class ViewController: UIViewController {
     
@@ -20,6 +22,8 @@ class ViewController: UIViewController {
     var cardViewContainer:CardViewContainer = CardViewContainer(frame: CGRectMake(0, 0, 320, 260))
     var num:Int = 99
     
+    var imageURLArray:[String] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBarHidden = true
@@ -27,11 +31,28 @@ class ViewController: UIViewController {
         
         cardViewContainer.center = CGPointMake(self.view.center.x, self.view.center.y-100)
         cardViewContainer.delegate = self
+    
         self.view.addSubview(cardViewContainer)
         
         starView.center = CGPointMake(self.view.center.x, self.view.center.y+200)
         self.view .addSubview(starView)
         
+        
+        Alamofire.request(.GET, "http://127.0.0.1:5000/meizi", parameters: nil)
+            .response { (request, response, data, error) in
+               // println(request)
+                //println(response)
+                var networkdata = data as! NSData
+                let json = JSON(data: networkdata)
+                for i in 0..<json.count{
+                    var dict = json[i]
+                    var string:String = dict["imgsrc"].stringValue
+                    self.imageURLArray.append(string)
+                }
+                self.cardViewContainer.imageStringURLArray = self.imageURLArray
+                print(self.imageURLArray)
+                
+        }
     }
     
     @IBAction func startAnimation(){
@@ -51,4 +72,5 @@ extension ViewController:CardViewContainerDelegate{
         var num:Int = Int(arc4random_uniform(99))
         starView.startLoadNumber(num)
     }
+    
 }

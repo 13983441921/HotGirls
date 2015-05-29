@@ -7,9 +7,15 @@
 //
 
 import UIKit
+import Kingfisher
 
 protocol CardViewContainerDelegate{
     func cardDidEndAnimationStart()
+    
+}
+
+protocol CardViewContainerDataSource{
+    func cardViewContainerImageData() -> [AnyObject]
 }
 
 class CardViewContainer: UIView {
@@ -21,6 +27,12 @@ class CardViewContainer: UIView {
     var cardViewArray:[CardView] = []
     var rectArray:[CGRect] = []
     var alphaArray:[CGFloat] = []
+    var imageStringURLArray:[String]?{
+        didSet{
+            reloadData()
+        }
+    }
+    
     var delegate:CardViewContainerDelegate?
     
     var isOpenCardModel:Bool = true{
@@ -35,8 +47,6 @@ class CardViewContainer: UIView {
         for i in 0..<3{
             var cardView:CardView = CardView(frame: CGRectInset(self.bounds, CGFloat(i)*kDeltaHeightAndWidth, CGFloat(i)*kDeltaHeightAndWidth))
         
-            cardView.girlImage = UIImage(named: "meishi\(i+1).jpg")!
-            print("meishi\(i).jpg\n")
             cardView.center = CGPointMake(CGRectGetWidth(self.bounds)/2.0 , CGRectGetHeight(self.bounds)/2.0 + CGFloat(i)*kDeltaYAxis)
             cardView.alpha = 1-CGFloat(i) * 0.1
             alphaArray.append(cardView.alpha)
@@ -47,8 +57,6 @@ class CardViewContainer: UIView {
             self.sendSubviewToBack(cardView)
         }
         
-        print("array count is %d",cardViewArray.count)
-        
         var gesture:UIPanGestureRecognizer = UIPanGestureRecognizer(target: self, action: Selector("handlePanGesture:"))
         
         self.addGestureRecognizer(gesture)
@@ -56,6 +64,26 @@ class CardViewContainer: UIView {
         var tapGesture:UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: Selector("handleTapGesture:"))
         
         self.addGestureRecognizer(tapGesture)
+    }
+    
+    func reloadData(){
+        for i in 0..<3{
+            var cardView:CardView = cardViewArray[i]
+            if let array = imageStringURLArray{
+                if array.count > i{
+                    var stringURL:String = array[i]
+                    cardView.girlImageView.kf_setImageWithURL(NSURL(string: stringURL)!)
+                    cardView.hidden = false
+                }else{
+                    var j = i+1
+                    for j in j..<3{
+                        var cardViewToHide:CardView = cardViewArray[j]
+                        cardViewToHide.hidden = true
+                    }
+                }
+                
+            }
+        }
     }
     
     func handlePanGesture(gesture:UIPanGestureRecognizer){
@@ -132,7 +160,8 @@ class CardViewContainer: UIView {
                         
                         
                         }, completion: { (_) -> Void in
-                            
+                            self.imageStringURLArray?.removeAtIndex(0)
+                            self.reloadData()
                     })
 
             })
@@ -173,7 +202,8 @@ class CardViewContainer: UIView {
                         
                         
                         }, completion: { (_) -> Void in
-                            
+                            self.imageStringURLArray?.removeAtIndex(0)
+                            self.reloadData()
                     })
             })
         }else

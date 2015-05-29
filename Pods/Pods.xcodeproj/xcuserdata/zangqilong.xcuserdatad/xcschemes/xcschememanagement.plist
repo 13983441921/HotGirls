@@ -19,6 +19,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Pods-HotGirls-SwiftyJSON.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-HotGirls-pop.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -32,27 +37,32 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>67C1C962B9582514C0E9FDD5</key>
+		<key>14B4DB466840E35AB48894AA</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>6B3C3BF5218CC82803AA7757</key>
+		<key>344106320B648E109847EA80</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>DE35E75E055ADD27C3974995</key>
+		<key>B23F89FAA5341D33F11A2229</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>ECEB5E41626E0527F23657B5</key>
+		<key>BD77849D51906A043A7280AD</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>F01CA8F68D19C67E7F645746</key>
+		<key>C73403C96302E02001DE0AD1</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F4BA1B5A18A803890FFC80BE</key>
 		<dict>
 			<key>primary</key>
 			<true/>

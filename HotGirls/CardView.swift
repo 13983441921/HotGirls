@@ -36,6 +36,7 @@ class CardView: UIView {
         girlAvatarImageView.layer.borderWidth = 2
         girlAvatarImageView.layer.borderColor = UIColor.whiteColor().CGColor
         girlAvatarImageView.transform = CGAffineTransformMakeTranslation(0, -300)
+        girlAvatarImageView.backgroundColor = UIColor.redColor()
         
         girlImage = UIImage(named: "tom.jpg")
         girlAvatarImageView.image = girlImage
