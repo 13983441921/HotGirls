@@ -4,27 +4,12 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>Pods-HotGirls-Alamofire.xcscheme</key>
+		<key>Alamofire.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-HotGirls-Kingfisher.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>Pods-HotGirls-SnapKit.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>Pods-HotGirls-SwiftyJSON.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>Pods-HotGirls-pop.xcscheme</key>
+		<key>Kingfisher.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -34,35 +19,50 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>SnapKit.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>SwiftyJSON.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>pop.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>14B4DB466840E35AB48894AA</key>
+		<key>432ECC54282C84882B482CCB4CF227FC</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>344106320B648E109847EA80</key>
+		<key>481BE83A47DBEB6A95A3AA28BEF9A973</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>B23F89FAA5341D33F11A2229</key>
+		<key>D991F8228847A6D4E1EFAE268D3CCAC4</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>BD77849D51906A043A7280AD</key>
+		<key>DF310FF9E077E169809081253A4B6288</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>C73403C96302E02001DE0AD1</key>
+		<key>E49C45FABC836C8DC2807CBFAE6463CF</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>F4BA1B5A18A803890FFC80BE</key>
+		<key>F91226101ECE8FCFD221A3EC54481F82</key>
 		<dict>
 			<key>primary</key>
 			<true/>

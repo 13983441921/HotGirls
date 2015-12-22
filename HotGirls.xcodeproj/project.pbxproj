@@ -23,7 +23,7 @@
 		40E61B271B0AD22900A0190D /* meishi2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 40E61B241B0AD22900A0190D /* meishi2.jpg */; };
 		40E61B281B0AD22900A0190D /* meishi3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 40E61B251B0AD22900A0190D /* meishi3.jpg */; };
 		40F9A3DF1B0DD87C00841689 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F9A3DE1B0DD87C00841689 /* UIColorExtension.swift */; };
-		976F3F392B37A1F2C9705FB0 /* Pods_HotGirls.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A6D7C2FEC098FB5E496C4FB /* Pods_HotGirls.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		976F3F392B37A1F2C9705FB0 /* Pods_HotGirls.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A6D7C2FEC098FB5E496C4FB /* Pods_HotGirls.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -245,6 +245,8 @@
 		40C33BA21AF0D36300C45B37 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftMigration = 0720;
+				LastSwiftUpdateCheck = 0720;
 				LastUpgradeCheck = 0630;
 				ORGANIZATIONNAME = "臧其龙";
 				TargetAttributes = {

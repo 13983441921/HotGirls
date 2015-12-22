@@ -39,8 +39,8 @@ class StarView: UIView {
     }
     
     func startLoadNumber(num:Int){
-        var tensDigit:Int = num/10
-        var singleDigit:Int = num%10
+        let tensDigit:Int = num/10
+        let singleDigit:Int = num%10
         
         tensSliderContainer.scrollToNum(tensDigit)
         singleSliderContainer.scrollToNum(singleDigit)
@@ -50,23 +50,23 @@ class StarView: UIView {
     
     override func layoutSubviews() {
         
-        var radius:CGFloat = CGRectGetWidth(self.bounds)/2.0
-        var center = CGPointMake(radius, radius)
-        var startAngle = -M_PI_2
-        var endAngle = M_PI_2*3.0
-        var circlePath = UIBezierPath(arcCenter: center, radius: radius, startAngle: CGFloat(startAngle), endAngle: CGFloat(endAngle), clockwise: true)
+        let radius:CGFloat = CGRectGetWidth(self.bounds)/2.0
+        let center = CGPointMake(radius, radius)
+        let startAngle = -M_PI_2
+        let endAngle = M_PI_2*3.0
+        let circlePath = UIBezierPath(arcCenter: center, radius: radius, startAngle: CGFloat(startAngle), endAngle: CGFloat(endAngle), clockwise: true)
         progressLayer.path = circlePath.CGPath
     }
     
     func startDrawCircleAnimation(){
-        var pathAnimation:CABasicAnimation = CABasicAnimation(keyPath: "strokeEnd")
+        let pathAnimation:CABasicAnimation = CABasicAnimation(keyPath: "strokeEnd")
         pathAnimation.fromValue = 0
         pathAnimation.toValue = 1
         pathAnimation.duration = 0.5
         progressLayer.addAnimation(pathAnimation, forKey: "pathAnimation")
     }
 
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     

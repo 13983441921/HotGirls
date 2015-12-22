@@ -26,7 +26,7 @@ class SliderLabelContainer: UIView {
         singleDigitsScroll = UIScrollView(frame: self.bounds)
         singleDigitsScroll.contentSize = CGSizeMake(CGRectGetWidth(self.bounds), CGRectGetHeight(self.bounds)*10)
         for i in 0...10{
-            var label:UILabel = UILabel(frame: CGRectMake(0, CGRectGetHeight(self.bounds) * CGFloat(i), CGRectGetWidth(self.bounds), CGRectGetHeight(self.bounds)))
+            let label:UILabel = UILabel(frame: CGRectMake(0, CGRectGetHeight(self.bounds) * CGFloat(i), CGRectGetWidth(self.bounds), CGRectGetHeight(self.bounds)))
             label.text = "\(i)"
             label.textAlignment = NSTextAlignment.Center
             label.font = UIFont.boldSystemFontOfSize(30)
@@ -53,7 +53,7 @@ class SliderLabelContainer: UIView {
         
     }
 
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     /*

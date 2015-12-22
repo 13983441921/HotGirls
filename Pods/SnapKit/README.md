@@ -3,6 +3,8 @@
 SnapKit is a DSL to make Auto Layout easy on both iOS and OS X.
 
 [![Build Status](https://travis-ci.org/SnapKit/SnapKit.svg)](https://travis-ci.org/SnapKit/SnapKit)
+[![Cocoapods Compatible](https://img.shields.io/cocoapods/v/SnapKit.svg)](https://img.shields.io/cocoapods/v/SnapKit.svg)
+[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 
 ```swift
 import SnapKit
@@ -28,6 +30,7 @@ class MyViewController: UIViewController {
 
 * [Documentation](http://snapkit.io/docs/)
 * [F.A.Q.](http://snapkit.io/faq/)
+* [Legacy Platforms (iOS 7.0, OS X 10.9)](http://snapkit.io/legacy-platforms/)
 
 ## License
 

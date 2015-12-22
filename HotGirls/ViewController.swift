@@ -42,15 +42,19 @@ class ViewController: UIViewController {
             .response { (request, response, data, error) in
                // println(request)
                 //println(response)
-                var networkdata = data as! NSData
-                let json = JSON(data: networkdata)
-                for i in 0..<json.count{
-                    var dict = json[i]
-                    var string:String = dict["imgsrc"].stringValue
-                    self.imageURLArray.append(string)
+                if let networkdata = data
+                {
+                    let json = JSON(data: networkdata)
+                    for i in 0..<json.count{
+                        var dict = json[i]
+                        var string:String = dict["imgsrc"].stringValue
+                        self.imageURLArray.append(string)
+                    }
+                    self.cardViewContainer.imageStringURLArray = self.imageURLArray
+                    print(self.imageURLArray)
+
                 }
-                self.cardViewContainer.imageStringURLArray = self.imageURLArray
-                print(self.imageURLArray)
+                //var networkdata = data as! NSData
                 
         }
     }
@@ -69,7 +73,7 @@ class ViewController: UIViewController {
 
 extension ViewController:CardViewContainerDelegate{
     func cardDidEndAnimationStart() {
-        var num:Int = Int(arc4random_uniform(99))
+        let num:Int = Int(arc4random_uniform(99))
         starView.startLoadNumber(num)
     }
     

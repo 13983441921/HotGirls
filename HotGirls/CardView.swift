@@ -45,7 +45,7 @@ class CardView: UIView {
         self.addSubview(girlAvatarImageView)
         
         girlImageView.snp_makeConstraints { (make:ConstraintMaker) -> Void in
-            make.edges.equalTo(self).insets(EdgeInsetsMake(20, 10, 20, 10))
+            make.edges.equalTo(self).inset(EdgeInsetsMake(20, left: 10, bottom: 20, right: 10))
         }
         
         girlAvatarImageView.snp_makeConstraints { (make:ConstraintMaker) -> Void in
@@ -86,7 +86,7 @@ class CardView: UIView {
         }
     }
 
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
